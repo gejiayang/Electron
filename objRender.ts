@@ -1,0 +1,1 @@
+const objRender = { key: 'value' }
