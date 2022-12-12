@@ -5,10 +5,34 @@
 </head>
 <body>
   <div>Hello World!</div>
-  <!-- <script src="./objRender.ts"></script> -->
+  <button id="openDevToolsBtn">打开开发者工具</button>
+  <button id="makeNewWindow">创建新窗口</button>
+  <button id="makeNewWindow2">创建新窗口2</button>
   <script>
-    const ObjRender2 = require('./objRender2.js')
-    alert(ObjRender2.key)
+    let remote = require('@electron/remote');
+    let { getCurrentWindow, BrowserWindow } = remote;
+    let webContents = getCurrentWindow();
+    document.querySelector('#openDevToolsBtn').addEventListener('click', function() {
+      webContents.openDevTools();
+    })
+    let win = null;
+    document.querySelector('#makeNewWindow').addEventListener('click', function() {
+      win = new BrowserWindow({
+        webPreferences: {
+          nodeIntegration: true,
+          contextIsolation: false,
+        }
+      });
+      win.loadFile('index.html')
+    })
+  </script>
+  <script>
+    let mainModel = remote.require('./mainModel.ts');
+    let win2 = null;
+    document.querySelector('#makeNewWindow2').addEventListener('click', function() {
+      win2 = mainModel.makeWin();
+      win2.loadFile('index.html')
+    })
   </script>
 </body>
 </html>
