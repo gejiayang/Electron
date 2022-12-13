@@ -8,13 +8,11 @@
       "type": "node",
       "request": "launch",
       "name": "调试主进程",
-      "cwd": "${workspaceRoot}",
-      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
-      "windows": {
-        "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
-      },
-      "args": ["./index.ts"],
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+      "args": ["index.ts"],
       "outputCapture": "std",
+
     }
   ]
 }

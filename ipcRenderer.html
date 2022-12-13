@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>通信窗口</title>
+</head>
+<body>
+  <button id="sendMsg">发送给主进程</button>
+  <script>
+    let { ipcRenderer } = require('electron')
+    document.querySelector('#sendMsg').addEventListener('click', function() {
+      ipcRenderer.send('msgToMain', { name: '页面参数' })
+    })
+
+    ipcRenderer.on('msgToRenderer', function(event, ...rest) {
+      console.log(rest[0])
+    })
+
+    ipcRenderer.on('rendererToRenderer', function(event, ...rest) {
+      console.log(rest);
+    })
+  </script>
+</body>
+</html>
