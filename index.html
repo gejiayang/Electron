@@ -1,46 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>窗口标题</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-  <div>Hello World!</div>
-  <button id="openDevToolsBtn">打开开发者工具</button>
-  <button id="makeRemoteWindow">创建通信窗口（remote方式）</button>
-  <button id="makeRemoteCustomWindow">创建通信窗口（remote自定义方式）</button>
-  <button id="sendMsgToRenderer">发送消息给渲染进程</button>
-  <script>
-    let remote = require('@electron/remote');
-    let remoteMain = require('@electron/remote/main');
-    let mainModel = remote.require('./mainModel.ts');
-    let { getCurrentWebContents, BrowserWindow } = remote;
-    let { ipcRenderer } = require('electron');
-
-    document.querySelector('#openDevToolsBtn').addEventListener('click', function() {
-      getCurrentWebContents.openDevTools();
-    })
-
-    let remoteWin = null;
-    document.querySelector('#makeRemoteWindow').addEventListener('click', function() {
-      remoteWin = new BrowserWindow({
-        webPreferences: {
-          nodeIntegration: true,
-          contextIsolation: false,
-        }
-      });
-      remoteMain.enable(remoteWin.webContents)
-      remoteWin.loadFile('ipcRenderer.html')
-    })
-    document.querySelector('#sendMsgToRenderer').addEventListener('click', function() {
-      ipcRenderer.sendTo(remoteWin.id, 'rendererToRenderer', { name: '渲染进程到渲染进程' })
-    })
-
-    let remoteCustomWin = null;
-    document.querySelector('#makeRemoteCustomWindow').addEventListener('click', function() {
-      remoteCustomWin = mainModel.makeWin();
-      remoteMain.enable(remoteCustomWin.webContents)
-      remoteCustomWin.loadFile('ipcRenderer.html')
-    })
-  </script>
+  <div id="time-container"></div>
+  <script src="./renderer.js"></script>
 </body>
 </html>

@@ -4,9 +4,11 @@ specifiers:
   '@electron/remote': ^2.0.9
   '@types/node': ^18
   electron: ^22.0.0
+  timer.js: ^1.0.4
 
 dependencies:
   '@electron/remote': 2.0.9_electron@22.0.0
+  timer.js: 1.0.4
 
 devDependencies:
   '@types/node': 18.11.13
@@ -419,6 +421,10 @@ packages:
       debug: 4.3.4
     transitivePeerDependencies:
       - supports-color
+
+  /timer.js/1.0.4:
+    resolution: {integrity: sha512-UU/lL02CjPMu8cu29h/uyt5yBqcm0vlx51Je9xCmVcH+TLS+X/+chv4V4rHlb37ZiI4iUVyLuC3QvyoFMzadwQ==}
+    dev: false
 
   /type-fest/0.13.1:
     resolution: {integrity: sha512-34R7HTnG0XIJcBSn5XhDd7nNFPRcXYRZrBB2O2jdKqYODldSzBAqzsWoZYYvduky73toYS/ESqxPvkDf/F0XMg==}

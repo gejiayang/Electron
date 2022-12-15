@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "electron ./index.ts"
+    "start": "electron ./index.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +14,7 @@
     "electron": "^22.0.0"
   },
   "dependencies": {
-    "@electron/remote": "^2.0.9"
+    "@electron/remote": "^2.0.9",
+    "timer.js": "^1.0.4"
   }
 }
